@@ -13,6 +13,8 @@
 #include "Delegates/IDelegateInstance.h"
 #include "TooltipEditor/TooltipTool.h"
 #include "Misc/EngineVersionComparison.h"
+#include "Linter.h"
+#include "BatchRenameTool/BatchRenameTool.h"
 
 #define LOCTEXT_NAMESPACE "Linter"
 DEFINE_LOG_CATEGORY_STATIC(LinterContentBrowserExtensions, Log, All);

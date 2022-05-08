@@ -20,6 +20,14 @@
 #include "Logging/MessageLog.h"
 #include "Logging/TokenizedMessage.h"
 #include "Misc/EngineVersionComparison.h"
+#include "ContentBrowserModule.h"
+#include "DesktopPlatformModule.h"
+#include "AssetToolsModule.h"
+#include "Framework/Docking/TabManager.h"
+#include "Widgets/Input/SComboBox.h"
+#include "Widgets/Docking/SDockTab.h"
+#include "Misc/App.h"
+#include "Engine/World.h"
 
 #include "LinterStyle.h"
 #include "LintRuleSet.h"
@@ -27,6 +35,7 @@
 #include "UI/SAssetLinkWidget.h"
 
 
+#define LOCTEXT_NAMESPACE "LinterWizard"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SLintWizard::Construct(const FArguments& InArgs)
@@ -661,3 +670,5 @@ bool SLintWizard::LoadAssetsIfNeeded(const TArray<FString>& ObjectPaths, TArray<
 
 	return true;
 }
+
+#undef LOCTEXT_NAMESPACE
