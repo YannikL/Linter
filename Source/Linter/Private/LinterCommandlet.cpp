@@ -42,6 +42,13 @@ int32 ULinterCommandlet::Main(const FString& InParams)
 	TMap<FString, FString> ParamsMap;
 	UCommandlet::ParseCommandLine(*Params, Paths, Switches, ParamsMap);
 
+	// Remove "LinterCommandlet" string from list of paths
+	const int32 Index = Paths.IndexOfByKey("LinterCommandlet");
+	if (Index != INDEX_NONE)
+	{
+		Paths.RemoveAt(Index);
+	}
+
 	UE_LOG(LinterCommandlet, Display, TEXT("Linter is indeed running!"));
 	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry"));
 
