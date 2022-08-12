@@ -93,6 +93,14 @@ int32 ULinterCommandlet::Main(const FString& InParams)
 	if (Paths.Num() == 0)
 	{
 		Paths.Add(TEXT("/Game"));
+
+		for (TSharedRef<IPlugin>& Plugin : IPluginManager::Get().GetDiscoveredPlugins())
+		{
+			if (Plugin->GetType() == EPluginType::Project)
+			{
+				Paths.Add(TEXT("/") + Plugin->GetName());
+			}
+		}
 	}
 
 	UE_LOG(LinterCommandlet, Display, TEXT("Attempting to Lint paths: %s"), *FString::Join(Paths, TEXT(", ")));
