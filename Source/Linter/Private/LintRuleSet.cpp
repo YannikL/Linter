@@ -48,6 +48,9 @@ TArray<FLintRuleViolation> ULintRuleSet::LintPath(TArray<FString> AssetPaths, FS
 	}
 
 	AssetRegistryModule.Get().GetAssets(ARFilter, AssetList);
+	// Todo: Find better way to filter. Ideally already added to FARFilter above.
+	AssetList.RemoveAllSwap([](const FAssetData& AssetData) { return AssetData.PackagePath.ToString().Contains("__ExternalActors__"); });
+	AssetList.RemoveAllSwap([](const FAssetData& AssetData) { return AssetData.PackagePath.ToString().Contains("/Developers/"); });
 
 	TArray<FLintRunner*> LintRunners;
 	TArray<FRunnableThread*> Threads;
